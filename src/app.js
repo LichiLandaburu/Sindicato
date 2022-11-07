@@ -3,6 +3,8 @@ import afiliadosRoutes from "./routes/afiliados.route.js";
 import sindicalesRoutes from "./routes/sindicales.route.js";
 import cors from "cors";
 import morgan from "morgan";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
