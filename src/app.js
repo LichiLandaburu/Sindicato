@@ -1,5 +1,6 @@
 import express from "express";
 import afiliadosRoutes from "./routes/afiliados.route.js";
+import sindicalesRoutes from "./routes/sindicales.route.js";
 import cors from "cors";
 import morgan from "morgan";
 
@@ -12,5 +13,6 @@ app.use(morgan("dev"));
 app.use(cors());
 
 app.use("/afiliados", afiliadosRoutes);
+app.use("/sindicales", sindicalesRoutes);
 
 export default app;

@@ -11,7 +11,7 @@ export async function createConnection() {
     const adapter = new JSONFile(file); //jsonfile espera una ruta absoluta, es decir C:/...
     db = new Low(adapter);
     await db.read();
-    db.data ||= { afiliados: [] }; //esto seria lo mismo que hacer db.data = db.data || {tasks: []}
+    db.data ||= { afiliados: [], sindicales: [] }; //esto seria lo mismo que hacer db.data = db.data || {tasks: []}
     await db.write();
 }
 
