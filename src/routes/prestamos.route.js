@@ -5,5 +5,6 @@ const router = Router();
 
 router.post("/", createPrestamo);
 router.get("/", getPrestamos);
+router.delete("/:nro", getPrestamos);
 
 export default router;
