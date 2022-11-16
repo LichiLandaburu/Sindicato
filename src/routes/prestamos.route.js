@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createPrestamo } from "../controllers/prestamos.controller";
+import { createPrestamo } from "../controllers/prestamos.controller.js";
 
 const router = Router();
 
