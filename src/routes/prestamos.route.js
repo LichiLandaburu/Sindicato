@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { createPrestamo } from "../controllers/prestamos.controller.js";
+import { createPrestamo, getPrestamos } from "../controllers/prestamos.controller.js";
 
 const router = Router();
 
 router.post("/", createPrestamo);
+router.get("/", getPrestamos);
 
 export default router;
