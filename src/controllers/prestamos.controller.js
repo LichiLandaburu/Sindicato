@@ -40,16 +40,16 @@ export const getPrestamos = async (req, res) => {
 
 export const deletePrestamo = async (req, res) => {
     try {
-        const { nro } = req.params;    
+        const { id_prestamo } = req.params;    
         const prestamos = getConnection().data.prestamos;
-        const prestamoEliminado = prestamos.find(p => p.createdAt === nro);
-        const nuevosPrestamos = prestamos.filter(p => p.createdAt !== nro);
+        const prestamoEliminado = prestamos.find(p => p.id_prestamo === parseInt(id_prestamo));
+        const nuevosPrestamos = prestamos.filter(p => p.id_prestamo !== parseInt(id_prestamo));
 
-        // if (!afiliadoEliminado) return res.status(400).json({ error: "La credencial no esta registrada" });
+        if (!prestamoEliminado) return res.status(400).json({ error: "El ID no existe" });
 
         getConnection().data.prestamos = nuevosPrestamos;
         await getConnection().write();
-        return res.json({ exito: `Prestamo con la credencial ${prestamoEliminado.createdAt} eliminado correctamente` });
+        return res.json({ exito: `Prestamo con el ID ${prestamoEliminado.id_prestamo} eliminado correctamente` });
     } 
     catch (error) {
         return res.status(500).send({ message: error.message });
