@@ -55,3 +55,16 @@ export const deletePrestamo = async (req, res) => {
         return res.status(500).send({ message: error.message });
     }
 }
+
+// export const setPagado = async (req, res) => {
+//     try {
+//         const { id_prestamo } = req.params;
+//         const { fecha_prestamo } = req.body;
+
+//         const prestamo = prestamos.find(p => p.id_prestamo === parseInt(id_prestamo));
+        
+//     }
+//     catch (error) {
+
+//     }
+// }
