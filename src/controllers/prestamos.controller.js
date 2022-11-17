@@ -18,7 +18,7 @@ export const createPrestamo = async (req, res) => {
         const prestamos = getConnection().data.prestamos;
         const createdAt = new Date().toLocaleString();
         const id_prestamo = generateUUID();
-        const nuevoPrestamo = { id_prestamo, ...req.body, createdAt };
+        const nuevoPrestamo = { id_prestamo, ...req.body, pagado: false, createdAt };
         prestamos.push(nuevoPrestamo);
         await getConnection().write();
         return res.json(nuevoPrestamo);
@@ -56,15 +56,25 @@ export const deletePrestamo = async (req, res) => {
     }
 }
 
-// export const setPagado = async (req, res) => {
-//     try {
-//         const { id_prestamo } = req.params;
-//         const { fecha_prestamo } = req.body;
+export const setPagado = async (req, res) => {
+    try {
+        const { id_prestamo } = req.params;
+        const { fecha_prestamo, estado } = req.body;
+        let prestamos = getConnection().data.prestamos;
 
-//         const prestamo = prestamos.find(p => p.id_prestamo === parseInt(id_prestamo));
-        
-//     }
-//     catch (error) {
+        let prestamo = prestamos.find(p => p.id_prestamo === id_prestamo);
+        const fechaACambiar = prestamo.cuotas.find(c => c.fecha === fecha_prestamo);
 
-//     }
-// }
+        fechaACambiar.pagado = estado;
+
+        const updatedPrestamos = prestamos.map(p => p.id_prestamo === id_prestamo ? prestamo : p);
+
+        prestamos = [ ...updatedPrestamos ];
+
+        await getConnection().write();
+        return res.json({ exito: `Prestamo con el id ${prestamo.id_prestamo} actualizado correctamente`});
+    }
+    catch (error) {
+        res.status(404).send({ message: error.message });
+    }
+}
