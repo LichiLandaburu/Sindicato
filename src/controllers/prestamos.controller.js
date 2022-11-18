@@ -42,8 +42,8 @@ export const deletePrestamo = async (req, res) => {
     try {
         const { id_prestamo } = req.params;    
         const prestamos = getConnection().data.prestamos;
-        const prestamoEliminado = prestamos.find(p => p.id_prestamo === parseInt(id_prestamo));
-        const nuevosPrestamos = prestamos.filter(p => p.id_prestamo !== parseInt(id_prestamo));
+        const prestamoEliminado = prestamos.find(p => p.id_prestamo === id_prestamo);
+        const nuevosPrestamos = prestamos.filter(p => p.id_prestamo !== id_prestamo);
 
         if (!prestamoEliminado) return res.status(400).json({ error: "El ID no existe" });
 
