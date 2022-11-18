@@ -18,7 +18,7 @@ export const createPrestamo = async (req, res) => {
         const prestamos = getConnection().data.prestamos;
         const createdAt = new Date().toLocaleString();
         const id_prestamo = generateUUID();
-        const nuevoPrestamo = { id_prestamo, ...req.body, pagado: false, createdAt };
+        const nuevoPrestamo = { id_prestamo, ...req.body, createdAt };
         prestamos.push(nuevoPrestamo);
         await getConnection().write();
         return res.json(nuevoPrestamo);
