@@ -6194,10 +6194,25 @@
       "ciudad": ""
     }
   ],
-  "prestamos": [
-    
-  ],
+  "prestamos": [],
   "practicas": [
-
+    {
+      "id_practica": "84d92b31f0ca46bcae6d045801905f57",
+      "fecha_ingreso": "28/11/2023",
+      "practica": "asdjhkasdjhnaskdjasdsdadsadsasadadsasd",
+      "fecha_autorizacion": "29/11/2023",
+      "planillas": "asdjsdasdasdasd",
+      "nro_credencial": 4482900,
+      "createdAt": "19/8/2023, 20:51:38"
+    },
+    {
+      "id_practica": "8dd753da781f4c618f2a115cd2e06012",
+      "fecha_ingreso": "28/11/2023",
+      "practica": "practica actualizada",
+      "fecha_autorizacion": "29/11/2023",
+      "planillas": "planillas actualizadas",
+      "nro_credencial": 4963100,
+      "createdAt": "19/8/2023, 21:49:18"
+    }
   ]
 }
